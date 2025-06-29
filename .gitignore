@@ -1,0 +1,20 @@
+# hidden files
+.*
+!.gitignore
+
+# engine
+fteqw*
+fteplug_*
+fteqcc*
+iqmtool*
+
+# generated files
+conhistory.txt
+installed.lst
+*.log
+*.pem
+*.pfx
+
+# scripts
+Makefile
+*.sh

@@ -1,0 +1,103 @@
+@BaseClass = Phong
+[
+	_phong(integer) : "Smooth shading"
+	_phong_angle(integer) : "Maxmimum angle for smooth shading"
+]
+
+@SolidClass = worldspawn : "World"
+[
+	sky(string) : "Sky name"
+	skyaxis(string) : "Axis of rotation"
+	skyrotate(string) : "Speed of rotation"
+	sounds(integer) : "Music track"
+	gravity(integer) : "Gravity" : 800
+	message(string) : "Level name"
+	_bounce(integer) : "Maximum light bounces"
+	_dirt(integer) : "Enable ambient occlusion"
+	_sunlight(integer) : "Sunlight brightness"
+	_sunlight_color(color1) : "Sunlight color"
+	_sunlight_penumbra(integer) : "Sunlight softness"
+	_sunlight_mangle(string) : "Sunlight angles (yaw pitch roll)"
+	_sunlight2(integer) : "Ambient sky brightness"
+	_sunlight2_color(color1) : "Ambient sky color"
+	_sunlight3(integer) : "Ambient sky brightness (below horizon)"
+	_sunlight3_color(color1) : "Ambient sky color (below horizon)"
+]
+
+@BaseClass = Angle [ angle(integer) : "Direction" ]
+@BaseClass = Mangle [ mangle(string) : "Angles (yaw pitch roll)" ]
+@BaseClass = Angles [ angles(string) : "Angles (pitch yaw roll)" ]
+@BaseClass = Name [ targetname(target_source) : "Name" ]
+
+@BaseClass = Target
+[
+	target(target_destination) : "Target"
+	delay(integer) : "Delay before firing target"
+]
+
+@BaseClass base(Name) size(-16 -16 -24, 16 16 32) color(0 255 0) = Player []
+@PointClass base(Player) size(-16 -16 0, 16 16 56) = info_player_start : "Player start" []
+
+@BaseClass base(Name) color(255 255 40) = Light
+[
+	light(integer) : "Brightness" : 300
+	_color(color1) : "Color"
+	wait(integer) : "Fade distance multiplier"
+	delay(choices) : "Attenuation" : 5 =
+	[
+		0 : "Linear"
+		1 : "Inverse distance"
+		2 : "Inverse distance squared"
+		3 : "None"
+		4 : "Local minimum"
+		5 : "Inverse distance squared B"
+	]
+	style(choices) : "Appearance" =
+	[
+		0 : "Normal"
+	]
+	spawnflags(flags) =
+	[
+		1 : "Start off" : 0
+	]
+]
+
+@PointClass base(Light) = light : "Light" []
+
+@PointClass base(Light, Mangle, Target) = light_spot : "Spotlight"
+[
+	angle(integer) : "Outer angle" : 40
+	_softangle(integer) : "Inner angle"
+]
+
+@PointClass base(Name) color(200 150 150) = info_null : "Spotlight target" []
+
+@SolidClass base(Phong) color(128 128 230) = func_detail : "Detail" []
+
+@PointClass size(-16 -16 -16, 16 16 16) color(128 128 230) = misc_external_map : "External map"
+[
+	_external_map(string) : "Path to map"
+	_external_map_classname(string) : "" : "func_detail"
+	_external_map_angles(integer) : "Angles (pitch yaw roll)"
+	_external_map_scale(integer)
+]
+
+@BaseClass base(Angles) size(-16 -16 -16, 16 16 16) color(220 150 150) model(model) = Prop
+[
+	model(string) : "Path to model"
+]
+
+@PointClass base(Prop) = prop_static : "Static model" []
+
+@PointClass color(150 0 150) = ambient_sound : "Ambient sound"
+[
+	message(string) : "Path to sound"
+	health(string) : "Volume" : "0.5"
+	speed(choices) : "Attenuation" : 3 =
+	[
+		0 : "None"
+		1 : "Normal"
+		2 : "Idle"
+		3 : "Static"
+	]
+]

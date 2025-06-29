@@ -1,0 +1,12 @@
+#output "../qwprogs.dat"
+
+#define QWSSQC
+
+#includelist
+common/fteextensions.qc
+common/defs.qc
+common/common.qc
+server/defs.qc
+server/server.qc
+server/world.qc
+#endlist

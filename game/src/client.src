@@ -1,0 +1,11 @@
+#output "../csprogs.dat"
+
+#define CSQC
+
+#includelist
+common/fteextensions.qc
+common/defs.qc
+common/common.qc
+client/defs.qc
+client/client.qc
+#endlist

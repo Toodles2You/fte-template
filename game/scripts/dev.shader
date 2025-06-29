@@ -1,0 +1,4 @@
+dev/mirror
+{
+	portal
+}

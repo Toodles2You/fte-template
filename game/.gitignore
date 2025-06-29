@@ -1,0 +1,33 @@
+# hidden files
+.*
+!.gitignore
+
+# configs
+*.cfg
+!default.cfg
+!developer.cfg
+!extensions.cfg
+
+# saves
+saves
+*.sav
+
+# progs
+csprogsvers
+*.lno
+*.txt
+
+# maps
+maps/autosave
+maps/compile
+maps/external/autosave
+*.log
+*.prt
+*.pts
+*.texinfo.json
+
+# models
+*.blend1
+
+# misc
+screenshots

@@ -1,0 +1,6 @@
+FTEMANIFEST 1
+GAME fteproject
+NAME "FTEQW Project"
+BASEDIR "game"
+GAMEDIR "game"
+DISABLEHOMEDIR 1
